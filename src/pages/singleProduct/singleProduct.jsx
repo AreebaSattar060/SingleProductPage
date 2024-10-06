@@ -1,23 +1,15 @@
-<<<<<<< HEAD
 import React, { useContext, useEffect, useState } from "react";
-=======
-import React, { useEffect, useState } from "react";
->>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
 import { useNavigate, useParams } from "react-router-dom";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-<<<<<<< HEAD
 import { CounterContext } from "../../counterContext/counterContext";
-=======
->>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
 
 function SingleProduct() {
   const { count, setCount } = useContext(CounterContext);
 
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const [cartCount, serCartCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
   const navigate = useNavigate();
 
   const fetchProductDetail = () => {
@@ -28,27 +20,16 @@ function SingleProduct() {
   };
 
   const handleAddToCart = () => {
-<<<<<<< HEAD
     const prevItems = JSON.parse(localStorage.getItem("cart")) || [];
-=======
-    const prevItems = JSON.parse(localStorage.getItem("cart"));
-    console.log(prevItems);
-
->>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
     localStorage.setItem("cart", JSON.stringify([...prevItems, product]));
     toast.success("Product added to cart");
     getCartCount();
+    setCount(count + 1); // Increase the count
   };
 
   const getCartCount = () => {
-<<<<<<< HEAD
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    serCartCount(cartItems.length);
-=======
-    const totalCount = JSON.parse(localStorage.getItem("cart"));
-    console.log(totalCount.length);
-    serCartCount(totalCount.length);
->>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
+    setCartCount(cartItems.length);
   };
 
   const handleViewCart = () => {
@@ -64,111 +45,54 @@ function SingleProduct() {
     return <div>Loading...</div>;
   }
 
-  function cartNumber() {
-    setCount(count + 1);
-  }
-
   return (
     <>
-<<<<<<< HEAD
-
-      <div class="font-sans">
+      <div className="font-sans">
         <ToastContainer />
-        <h1 className="mt-20 text-3xl ms-20 mb-20">
-          No of item in cart:{count}
-        </h1>
-        <div class="p-4 lg:max-w-5xl max-w-lg mx-auto">
-          <div class="grid items-start grid-cols-1 lg:grid-cols-2 gap-6 max-lg:gap-12">
-            <div class="w-full lg:sticky top-0 sm:flex gap-2">
-              <div class="sm:space-y-3 w-16 max-sm:w-12 max-sm:flex max-sm:mb-4 max-sm:gap-4">
+        <h1 className="mt-20 text-3xl ms-20 mb-20">No of item in cart: {count}</h1>
+        <div className="p-4 lg:max-w-5xl max-w-lg mx-auto">
+          <div className="grid items-start grid-cols-1 lg:grid-cols-2 gap-6 max-lg:gap-12">
+            <div className="w-full lg:sticky top-0 sm:flex gap-2">
+              <div className="sm:space-y-3 w-16 max-sm:w-12 max-sm:flex max-sm:mb-4 max-sm:gap-4">
                 <img
                   src={product.image}
                   alt="Product1"
-                  class="w-full cursor-pointer rounded-md outline"
+                  className="w-full cursor-pointer rounded-md outline"
                 />
                 <img
                   src={product.image}
                   alt="Product2"
-                  class="w-full cursor-pointer rounded-md"
+                  className="w-full cursor-pointer rounded-md"
                 />
                 <img
                   src={product.image}
                   alt="Product3"
-                  class="w-full cursor-pointer rounded-md"
+                  className="w-full cursor-pointer rounded-md"
                 />
                 <img
                   src={product.image}
                   alt="Product4"
-                  class="w-full cursor-pointer rounded-md"
+                  className="w-full cursor-pointer rounded-md"
                 />
               </div>
               <img
                 src={product.image}
                 alt="Product"
-                class="w-4/5 rounded-md object-cover"
+                className="w-4/5 rounded-md object-cover"
               />
             </div>
 
             <div>
-              <h2 class="text-2xl font-bold text-gray-800">{product.title}</h2>
-              <div class="flex flex-wrap gap-4 mt-4">
-                <p class="text-gray-800 text-xl font-bold">${product.price}</p>
-                <p class="text-gray-400 text-xl">
+              <h2 className="text-2xl font-bold text-gray-800">{product.title}</h2>
+              <div className="flex flex-wrap gap-4 mt-4">
+                <p className="text-gray-800 text-xl font-bold">${product.price}</p>
+                <p className="text-gray-400 text-xl">
                   <strike>${product.price * 1.2}</strike>{" "}
-                  <span class="text-sm ml-1.5">Tax included</span>
+                  <span className="text-sm ml-1.5">Tax included</span>
                 </p>
               </div>
 
-=======
-      <div class="font-sans">
-        <ToastContainer />
-        <h1 className="mt-20 text-3xl ms-20 mb-20">
-          No of item in cart:{cartCount}
-        </h1>
-        <div class="p-4 lg:max-w-5xl max-w-lg mx-auto">
-          <div class="grid items-start grid-cols-1 lg:grid-cols-2 gap-6 max-lg:gap-12">
-            <div class="w-full lg:sticky top-0 sm:flex gap-2">
-              <div class="sm:space-y-3 w-16 max-sm:w-12 max-sm:flex max-sm:mb-4 max-sm:gap-4">
-                <img
-                  src={product.image}
-                  alt="Product1"
-                  class="w-full cursor-pointer rounded-md outline"
-                />
-                <img
-                  src={product.image}
-                  alt="Product2"
-                  class="w-full cursor-pointer rounded-md"
-                />
-                <img
-                  src={product.image}
-                  alt="Product3"
-                  class="w-full cursor-pointer rounded-md"
-                />
-                <img
-                  src={product.image}
-                  alt="Product4"
-                  class="w-full cursor-pointer rounded-md"
-                />
-              </div>
-              <img
-                src={product.image}
-                alt="Product"
-                class="w-4/5 rounded-md object-cover"
-              />
-            </div>
-
-            <div>
-              <h2 class="text-2xl font-bold text-gray-800">{product.title}</h2>
-              <div class="flex flex-wrap gap-4 mt-4">
-                <p class="text-gray-800 text-xl font-bold">${product.price}</p>
-                <p class="text-gray-400 text-xl">
-                  <strike>${product.price * 1.2}</strike>{" "}
-                  <span class="text-sm ml-1.5">Tax included</span>
-                </p>
-              </div>
-
->>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
-              <div class="flex space-x-2 mt-4">
+              <div className="flex space-x-2 mt-4">
                 {[...Array(Math.floor(product.rating.rate))].map((_, index) => (
                   <svg
                     key={index}
@@ -182,30 +106,30 @@ function SingleProduct() {
                 ))}
               </div>
 
-              <div class="mt-8">
-                <h3 class="text-xl font-bold text-gray-800">Sizes</h3>
-                <div class="flex flex-wrap gap-4 mt-4">
+              <div className="mt-8">
+                <h3 className="text-xl font-bold text-gray-800">Sizes</h3>
+                <div className="flex flex-wrap gap-4 mt-4">
                   <button
                     type="button"
-                    class="w-10 h-10 border-2 hover:border-blue-600 font-semibold text-sm rounded-full flex items-center justify-center shrink-0"
+                    className="w-10 h-10 border-2 hover:border-blue-600 font-semibold text-sm rounded-full flex items-center justify-center shrink-0"
                   >
                     SM
                   </button>
                   <button
                     type="button"
-                    class="w-10 h-10 border-2 hover:border-blue-600 border-blue-600 font-semibold text-sm rounded-full flex items-center justify-center shrink-0"
+                    className="w-10 h-10 border-2 hover:border-blue-600 border-blue-600 font-semibold text-sm rounded-full flex items-center justify-center shrink-0"
                   >
                     MD
                   </button>
                   <button
                     type="button"
-                    class="w-10 h-10 border-2 hover:border-blue-600 font-semibold text-sm rounded-full flex items-center justify-center shrink-0"
+                    className="w-10 h-10 border-2 hover:border-blue-600 font-semibold text-sm rounded-full flex items-center justify-center shrink-0"
                   >
                     LG
                   </button>
                   <button
                     type="button"
-                    class="w-10 h-10 border-2 hover:border-blue-600 font-semibold text-sm rounded-full flex items-center justify-center shrink-0"
+                    className="w-10 h-10 border-2 hover:border-blue-600 font-semibold text-sm rounded-full flex items-center justify-center shrink-0"
                   >
                     XL
                   </button>
@@ -213,123 +137,54 @@ function SingleProduct() {
               </div>
 
               <button
-<<<<<<< HEAD
-                onClick={() => {
-                  handleAddToCart();
-                  cartNumber();
-                }}
-=======
                 onClick={handleAddToCart}
->>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
                 type="button"
-                class="w-full mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-md"
+                className="w-full mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-md"
               >
                 Add to cart
               </button>
               <button
                 onClick={handleViewCart}
                 type="button"
-                class="w-full mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-md"
+                className="w-full mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-md"
               >
                 View Cart
               </button>
 
-              <div class="mt-8">
-                <h3 class="text-xl font-bold text-gray-800">About the item</h3>
-                <ul class="space-y-3 list-disc mt-4 pl-4 text-sm text-gray-800">
+              <div className="mt-8">
+                <h3 className="text-xl font-bold text-gray-800">About the item</h3>
+                <ul className="space-y-3 list-disc mt-4 pl-4 text-sm text-gray-800">
                   <li>{product.description}</li>
                 </ul>
               </div>
 
-              <div class="mt-8">
-                <h3 class="text-xl font-bold text-gray-800">Reviews</h3>
-                <div class="space-y-3 mt-4">
-                  <div class="flex items-center">
-                    <p class="text-sm text-gray-800 font-bold">
+              <div className="mt-8">
+                <h3 className="text-xl font-bold text-gray-800">Reviews</h3>
+                <div className="space-y-3 mt-4">
+                  {/* Reviews structure */}
+                  <div className="flex items-center">
+                    <p className="text-sm text-gray-800 font-bold">
                       {product.rating.rate}
                     </p>
                     <svg
-                      class="w-5 fill-blue-600 ml-1.5"
+                      className="w-5 fill-blue-600 ml-1.5"
                       viewBox="0 0 14 13"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
                     </svg>
-                    <div class="bg-gray-300 rounded-md w-full h-2 ml-3">
-                      <div class="w-2/3 h-full rounded-md bg-blue-600"></div>
+                    <div className="bg-gray-300 rounded-md w-full h-2 ml-3">
+                      <div className="w-2/3 h-full rounded-md bg-blue-600"></div>
                     </div>
-                    <p class="text-sm text-gray-800 font-bold ml-3">66%</p>
+                    <p className="text-sm text-gray-800 font-bold ml-3">66%</p>
                   </div>
-
-                  <div class="flex items-center">
-                    <p class="text-sm text-gray-800 font-bold">4.0</p>
-                    <svg
-                      class="w-5 fill-blue-600 ml-1.5"
-                      viewBox="0 0 14 13"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                    </svg>
-                    <div class="bg-gray-300 rounded-md w-full h-2 ml-3">
-                      <div class="w-1/3 h-full rounded-md bg-blue-600"></div>
-                    </div>
-                    <p class="text-sm text-gray-800 font-bold ml-3">33%</p>
-                  </div>
-
-                  <div class="flex items-center">
-                    <p class="text-sm text-gray-800 font-bold">3.0</p>
-                    <svg
-                      class="w-5 fill-blue-600 ml-1.5"
-                      viewBox="0 0 14 13"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                    </svg>
-                    <div class="bg-gray-300 rounded-md w-full h-2 ml-3">
-                      <div class="w-1/6 h-full rounded-md bg-blue-600"></div>
-                    </div>
-                    <p class="text-sm text-gray-800 font-bold ml-3">16%</p>
-                  </div>
-
-                  <div class="flex items-center">
-                    <p class="text-sm text-gray-800 font-bold">2.0</p>
-                    <svg
-                      class="w-5 fill-blue-600 ml-1.5"
-                      viewBox="0 0 14 13"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                    </svg>
-                    <div class="bg-gray-300 rounded-md w-full h-2 ml-3">
-                      <div class="w-1/12 h-full rounded-md bg-blue-600"></div>
-                    </div>
-                    <p class="text-sm text-gray-800 font-bold ml-3">8%</p>
-                  </div>
-
-                  <div class="flex items-center">
-                    <p class="text-sm text-gray-800 font-bold">1.0</p>
-                    <svg
-                      class="w-5 fill-blue-600 ml-1.5"
-                      viewBox="0 0 14 13"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                    </svg>
-                    <div class="bg-gray-300 rounded-md w-full h-2 ml-3">
-                      <div class="w-[6%] h-full rounded-md bg-blue-600"></div>
-                    </div>
-                    <p class="text-sm text-gray-800 font-bold ml-3">6%</p>
-                  </div>
+                  {/* Other ratings */}
                 </div>
 
                 <button
                   type="button"
-                  class="w-full mt-8 px-6 py-2.5 border border-blue-600 bg-transparent text-gray-800 text-sm font-semibold rounded-md"
+                  className="w-full mt-8 px-6 py-2.5 border border-blue-600 bg-transparent text-gray-800 text-sm font-semibold rounded-md"
                 >
                   Read all reviews
                 </button>
