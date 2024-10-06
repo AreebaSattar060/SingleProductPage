@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CounterContext } from '../../counterContext/counterContext';
+
 
 function Product() {
+
+  const {count, setCount} = useContext(CounterContext);
+
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -22,6 +27,11 @@ function Product() {
 
   return (
     <div className="container mx-auto p-4">
+
+<h1 className="mt-20 text-3xl ms-20 mb-20">
+          No of item in cart:{count}
+        </h1>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {data.map(item => (
           <div
