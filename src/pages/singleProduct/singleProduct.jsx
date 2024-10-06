@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import React, { useContext, useEffect, useState } from "react";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
 import { useNavigate, useParams } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+<<<<<<< HEAD
 import { CounterContext } from "../../counterContext/counterContext";
+=======
+>>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
 
 function SingleProduct() {
   const { count, setCount } = useContext(CounterContext);
@@ -21,15 +28,27 @@ function SingleProduct() {
   };
 
   const handleAddToCart = () => {
+<<<<<<< HEAD
     const prevItems = JSON.parse(localStorage.getItem("cart")) || [];
+=======
+    const prevItems = JSON.parse(localStorage.getItem("cart"));
+    console.log(prevItems);
+
+>>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
     localStorage.setItem("cart", JSON.stringify([...prevItems, product]));
     toast.success("Product added to cart");
     getCartCount();
   };
 
   const getCartCount = () => {
+<<<<<<< HEAD
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     serCartCount(cartItems.length);
+=======
+    const totalCount = JSON.parse(localStorage.getItem("cart"));
+    console.log(totalCount.length);
+    serCartCount(totalCount.length);
+>>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
   };
 
   const handleViewCart = () => {
@@ -51,6 +70,7 @@ function SingleProduct() {
 
   return (
     <>
+<<<<<<< HEAD
 
       <div class="font-sans">
         <ToastContainer />
@@ -99,6 +119,55 @@ function SingleProduct() {
                 </p>
               </div>
 
+=======
+      <div class="font-sans">
+        <ToastContainer />
+        <h1 className="mt-20 text-3xl ms-20 mb-20">
+          No of item in cart:{cartCount}
+        </h1>
+        <div class="p-4 lg:max-w-5xl max-w-lg mx-auto">
+          <div class="grid items-start grid-cols-1 lg:grid-cols-2 gap-6 max-lg:gap-12">
+            <div class="w-full lg:sticky top-0 sm:flex gap-2">
+              <div class="sm:space-y-3 w-16 max-sm:w-12 max-sm:flex max-sm:mb-4 max-sm:gap-4">
+                <img
+                  src={product.image}
+                  alt="Product1"
+                  class="w-full cursor-pointer rounded-md outline"
+                />
+                <img
+                  src={product.image}
+                  alt="Product2"
+                  class="w-full cursor-pointer rounded-md"
+                />
+                <img
+                  src={product.image}
+                  alt="Product3"
+                  class="w-full cursor-pointer rounded-md"
+                />
+                <img
+                  src={product.image}
+                  alt="Product4"
+                  class="w-full cursor-pointer rounded-md"
+                />
+              </div>
+              <img
+                src={product.image}
+                alt="Product"
+                class="w-4/5 rounded-md object-cover"
+              />
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-bold text-gray-800">{product.title}</h2>
+              <div class="flex flex-wrap gap-4 mt-4">
+                <p class="text-gray-800 text-xl font-bold">${product.price}</p>
+                <p class="text-gray-400 text-xl">
+                  <strike>${product.price * 1.2}</strike>{" "}
+                  <span class="text-sm ml-1.5">Tax included</span>
+                </p>
+              </div>
+
+>>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
               <div class="flex space-x-2 mt-4">
                 {[...Array(Math.floor(product.rating.rate))].map((_, index) => (
                   <svg
@@ -144,10 +213,14 @@ function SingleProduct() {
               </div>
 
               <button
+<<<<<<< HEAD
                 onClick={() => {
                   handleAddToCart();
                   cartNumber();
                 }}
+=======
+                onClick={handleAddToCart}
+>>>>>>> 9a305225b1632253606c9bff283b7988fa5a0820
                 type="button"
                 class="w-full mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-md"
               >
